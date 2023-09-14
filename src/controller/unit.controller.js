@@ -1,6 +1,6 @@
 const { Unidade } = require('../models/unidade')
 const { Generation } = require('../models/generation')
-const { checkBody } = require('../services/checkBody')
+const { checkBody } = require('../service/checkBody')
 
 
 class UnitController {
