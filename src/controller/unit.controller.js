@@ -2,6 +2,7 @@ const { Unidade } = require('../models/unidade')
 const { Generation } = require('../models/generation')
 const { checkBody } = require('../services/checkBody')
 
+
 class UnitController {
 
     async createUnit(req, res) {

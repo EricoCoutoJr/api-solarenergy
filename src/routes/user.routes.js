@@ -1,20 +1,15 @@
 const { Router } = require('express')
-const {
-    createUnit,
-    listOneUnit,
-    editUnit,
-    deleteUnit } = require('../controller/unit.controller')
+const { loginUser, createUser, listUser, editUser, deleteUser } = require('../controller/user.controller')
 const { auth } = require('../midlleware/auth')
+class UserRouter {
 
-class UnitRouter {
-
-    routesFromUnit() {
-        const unitRoutes = Router();
-        unitRoutes.get('/v1/unidade/:id', auth, listOneUnit)
-        unitRoutes.post('/v1/unidade', auth, createUnit)
-        unitRoutes.put('/v1/unidade/:id', auth, editUnit)
-        unitRoutes.delete('/v1/unidade/:id', deleteUnit)
-
+    routesFromUser() {
+        const userRoutes = Router()
+        userRoutes.post('/v1/usuario', createUser)
+        userRoutes.post('/v1/usuario/login', loginUser)
+        userRoutes.get('/v1/usuario/:id', auth, listUser)
+        userRoutes.put('/v1/usuario/:id', auth, editUser)
+        userRoutes.delete('/v1/usuario/:id', auth, deleteUser)
         return unitRoutes
     }
 }
