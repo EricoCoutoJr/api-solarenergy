@@ -1,17 +1,22 @@
 const { Router } = require('express')
-const { createUser, listUser, editUser, deleteUser } = require('../controller/user.controller')
+const {
+    createUnit,
+    listOneUnit,
+    editUnit,
+    deleteUnit } = require('../controller/unit.controller')
+const { auth } = require('../midlleware/auth')
 
-class UserRouter {
+class UnitRouter {
 
-    routesFromUser() {
-        const userRoutes = Router()
-        userRoutes.get('/v1/usuario', listUser)
-        userRoutes.post('/v1/usuario', createUser)
-        userRoutes.put('/v1/usuario/:id', editUser)
-        userRoutes.delete('/v1/usuario/:id', deleteUser)
+    routesFromUnit() {
+        const unitRoutes = Router();
+        unitRoutes.get('/v1/unidade/:id', auth, listOneUnit)
+        unitRoutes.post('/v1/unidade', auth, createUnit)
+        unitRoutes.put('/v1/unidade/:id', auth, editUnit)
+        unitRoutes.delete('/v1/unidade/:id', deleteUnit)
 
-        return userRoutes;
+        return unitRoutes
     }
 }
 
-module.exports = new UserRouter();
+module.exports = new UnitRouter();
