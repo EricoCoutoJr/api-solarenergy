@@ -1,6 +1,8 @@
 const express = require('express');
 const { connection } = require('./database/connection');
 const routes = require('./routes/index');
+const dotenv = require('dotenv');
+dotenv.config();
 
 class Server {
 
@@ -33,7 +35,7 @@ class Server {
 
     // Inicializa o servidor
     async initializeServer(server) {
-        const PORT = 3333
+        const PORT = process.env.API_PORT || 80
         server.listen(PORT);
     }
 }
