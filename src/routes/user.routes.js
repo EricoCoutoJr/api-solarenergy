@@ -10,9 +10,8 @@ class UserRouter {
         userRoutes.get('/v1/usuario/:id', auth, listUser)
         userRoutes.put('/v1/usuario/:id', auth, editUser)
         userRoutes.delete('/v1/usuario/:id', auth, deleteUser)
-
-        return userRoutes;
+        return unitRoutes
     }
 }
 
-module.exports = new UserRouter();
+module.exports = new UnitRouter();
